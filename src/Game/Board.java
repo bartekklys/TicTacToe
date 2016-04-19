@@ -33,15 +33,17 @@ public class Board extends JFrame {
 
         restartItem = new JMenuItem("Restart");
         exitItem = new JMenuItem("Exit");
+        exitItem.addActionListener(e -> System.exit(0));
         aboutItem = new JMenuItem("About");
+        aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(null, "created by Bartek"));
 
         gameMenu.add(restartItem);
         gameMenu.add(exitItem);
         helpMenu.add(aboutItem);
 
-        menu.add(menuBar);
+        setJMenuBar(menuBar);
 
-        // PLANSZA
+        //game-board
 
         JButton button1 = new JButton("");
         JButton button2 = new JButton("");
@@ -68,7 +70,5 @@ public class Board extends JFrame {
 
         add(menu, BorderLayout.NORTH);
         add(board);
-
     }
-
 }
