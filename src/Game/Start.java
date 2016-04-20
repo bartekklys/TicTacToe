@@ -10,7 +10,7 @@ public class Start extends JFrame {
     private static final int DEFAULT_WIDTH = 350;
     private static final int DEFAULT_HEIGHT = 350;
 
-    Start(){
+    Start() {
 
         setLayout(new BorderLayout());
 

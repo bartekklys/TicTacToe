@@ -46,13 +46,17 @@ public class Board extends JPanel implements ActionListener {
         button7.addActionListener(this);
         button8.addActionListener(this);
         button9.addActionListener(this);
-
     }
 
     private void setGame() {
 
         gameArray = new GameArray(this);
+        player = 1;
         defaultIcon();
+        enableButtons();
+    }
+
+    private void enableButtons() {
         button1.setEnabled(true);
         button2.setEnabled(true);
         button3.setEnabled(true);
@@ -62,6 +66,18 @@ public class Board extends JPanel implements ActionListener {
         button7.setEnabled(true);
         button8.setEnabled(true);
         button9.setEnabled(true);
+    }
+
+    public void disableButtons() {
+        button1.setEnabled(false);
+        button2.setEnabled(false);
+        button3.setEnabled(false);
+        button4.setEnabled(false);
+        button5.setEnabled(false);
+        button6.setEnabled(false);
+        button7.setEnabled(false);
+        button8.setEnabled(false);
+        button9.setEnabled(false);
     }
 
     private void defaultIcon() {
@@ -78,20 +94,20 @@ public class Board extends JPanel implements ActionListener {
 
     public void setMark(JButton button, int player) {
 
-            if (player == 1) {
-                button.setIcon(new ImageIcon("/home/bartek/IdeaProjects/TicTacToe/src/resources/X.png"));
-                switchTurn();
-            } else {
-                button.setIcon(new ImageIcon("/home/bartek/IdeaProjects/TicTacToe/src/resources/O.png"));
-                switchTurn();
-            }
+        if (player == 1) {
+            button.setIcon(new ImageIcon("/home/bartek/IdeaProjects/TicTacToe/src/resources/X.png"));
+            switchTurn();
+        } else {
+            button.setIcon(new ImageIcon("/home/bartek/IdeaProjects/TicTacToe/src/resources/O.png"));
+            switchTurn();
+        }
     }
 
     private void switchTurn() {
         if (player == 1)
             player = 2;
         else
-            player =1;
+            player = 1;
     }
 
     public void reset() {
@@ -102,47 +118,47 @@ public class Board extends JPanel implements ActionListener {
 
         JButton pressed = (JButton) e.getSource();
 
-        if(pressed == button1) {
+        if (pressed == button1) {
             gameArray.arrayInitialize(0, player);
             setMark(pressed, player);
             button1.setEnabled(false);
         }
-        if(pressed == button2) {
+        if (pressed == button2) {
             gameArray.arrayInitialize(1, player);
             setMark(pressed, player);
             button2.setEnabled(false);
         }
-        if(pressed == button3) {
+        if (pressed == button3) {
             gameArray.arrayInitialize(2, player);
             setMark(pressed, player);
             button3.setEnabled(false);
         }
-        if(pressed == button4) {
+        if (pressed == button4) {
             gameArray.arrayInitialize(3, player);
             setMark(pressed, player);
             button4.setEnabled(false);
         }
-        if(pressed == button5) {
+        if (pressed == button5) {
             gameArray.arrayInitialize(4, player);
             setMark(pressed, player);
             button5.setEnabled(false);
         }
-        if(pressed == button6) {
+        if (pressed == button6) {
             gameArray.arrayInitialize(5, player);
             setMark(pressed, player);
             button6.setEnabled(false);
         }
-        if(pressed == button7) {
+        if (pressed == button7) {
             gameArray.arrayInitialize(6, player);
             setMark(pressed, player);
             button7.setEnabled(false);
         }
-        if(pressed == button8) {
+        if (pressed == button8) {
             gameArray.arrayInitialize(7, player);
             setMark(pressed, player);
             button8.setEnabled(false);
         }
-        if(pressed == button9) {
+        if (pressed == button9) {
             gameArray.arrayInitialize(8, player);
             setMark(pressed, player);
             button9.setEnabled(false);
