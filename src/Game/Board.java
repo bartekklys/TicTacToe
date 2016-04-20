@@ -52,10 +52,19 @@ public class Board extends JPanel implements ActionListener {
     private void setGame() {
 
         gameArray = new GameArray(this);
-        defaultText();
+        defaultIcon();
+        button1.setEnabled(true);
+        button2.setEnabled(true);
+        button3.setEnabled(true);
+        button4.setEnabled(true);
+        button5.setEnabled(true);
+        button6.setEnabled(true);
+        button7.setEnabled(true);
+        button8.setEnabled(true);
+        button9.setEnabled(true);
     }
 
-    private void defaultText() {
+    private void defaultIcon() {
         button1.setIcon(null);
         button2.setIcon(null);
         button3.setIcon(null);
@@ -85,15 +94,58 @@ public class Board extends JPanel implements ActionListener {
             player =1;
     }
 
+    public void reset() {
+        setGame();
+    }
+
     public void actionPerformed(ActionEvent e) {
 
         JButton pressed = (JButton) e.getSource();
 
-        setMark(pressed, player);
-
-    }
-
-    public void reset() {
-        setGame();
+        if(pressed == button1) {
+            gameArray.arrayInitialize(0, player);
+            setMark(pressed, player);
+            button1.setEnabled(false);
+        }
+        if(pressed == button2) {
+            gameArray.arrayInitialize(1, player);
+            setMark(pressed, player);
+            button2.setEnabled(false);
+        }
+        if(pressed == button3) {
+            gameArray.arrayInitialize(2, player);
+            setMark(pressed, player);
+            button3.setEnabled(false);
+        }
+        if(pressed == button4) {
+            gameArray.arrayInitialize(3, player);
+            setMark(pressed, player);
+            button4.setEnabled(false);
+        }
+        if(pressed == button5) {
+            gameArray.arrayInitialize(4, player);
+            setMark(pressed, player);
+            button5.setEnabled(false);
+        }
+        if(pressed == button6) {
+            gameArray.arrayInitialize(5, player);
+            setMark(pressed, player);
+            button6.setEnabled(false);
+        }
+        if(pressed == button7) {
+            gameArray.arrayInitialize(6, player);
+            setMark(pressed, player);
+            button7.setEnabled(false);
+        }
+        if(pressed == button8) {
+            gameArray.arrayInitialize(7, player);
+            setMark(pressed, player);
+            button8.setEnabled(false);
+        }
+        if(pressed == button9) {
+            gameArray.arrayInitialize(8, player);
+            setMark(pressed, player);
+            button9.setEnabled(false);
+        }
     }
 }
