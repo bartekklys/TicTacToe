@@ -1,17 +1,24 @@
 package Game;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URL;
 
 public class Board extends JPanel implements ActionListener {
 
     private JButton button1, button2, button3, button4, button5, button6, button7, button8, button9;
     private GameArray gameArray;
     private int player = 1;
+    private URL xUrl = new URL("https://raw.githubusercontent.com/bartekklys/TicTacToe/master/src/resources/X.png");
+    private URL oUrl = new URL("https://raw.githubusercontent.com/bartekklys/TicTacToe/master/src/resources/O.png");
+    private Image xImage = ImageIO.read(xUrl);
+    private Image oImage = ImageIO.read(oUrl);
 
-    public Board() {
+    public Board() throws IOException {
 
         setLayout(new GridLayout(3, 3));
 
@@ -95,10 +102,10 @@ public class Board extends JPanel implements ActionListener {
     public void setMark(JButton button, int player) {
 
         if (player == 1) {
-            button.setIcon(new ImageIcon("/home/bartek/IdeaProjects/TicTacToe/src/resources/X.png"));
+            button.setIcon(new ImageIcon(xImage));
             switchTurn();
         } else {
-            button.setIcon(new ImageIcon("/home/bartek/IdeaProjects/TicTacToe/src/resources/O.png"));
+            button.setIcon(new ImageIcon(oImage));
             switchTurn();
         }
     }

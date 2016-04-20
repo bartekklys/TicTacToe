@@ -2,6 +2,7 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class Start extends JFrame {
 
@@ -14,7 +15,11 @@ public class Start extends JFrame {
 
         setLayout(new BorderLayout());
 
-        gameBoard = new Board();
+        try {
+            gameBoard = new Board();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         toolBar = new ToolBar();
 
         toolBar.setBoard(gameBoard);
