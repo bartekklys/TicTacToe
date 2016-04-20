@@ -5,12 +5,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Board extends JPanel implements ActionListener{
+public class Board extends JPanel implements ActionListener {
 
-    private JButton button1,button2, button3, button4, button5, button6, button7, button8, button9;
+    private JButton button1, button2, button3, button4, button5, button6, button7, button8, button9;
     private GameArray gameArray;
+    private int player = 1;
 
-    public Board(){
+    public Board() {
 
         setLayout(new GridLayout(3, 3));
 
@@ -55,32 +56,40 @@ public class Board extends JPanel implements ActionListener{
     }
 
     private void defaultText() {
-        button1.setText("");
-        button2.setText("");
-        button3.setText("");
-        button4.setText("");
-        button5.setText("");
-        button6.setText("");
-        button7.setText("");
-        button8.setText("");
-        button9.setText("");
+        button1.setIcon(null);
+        button2.setIcon(null);
+        button3.setIcon(null);
+        button4.setIcon(null);
+        button5.setIcon(null);
+        button6.setIcon(null);
+        button7.setIcon(null);
+        button8.setIcon(null);
+        button9.setIcon(null);
     }
 
-    public void setMark(JButton button){
+    public void setMark(JButton button, int player) {
 
-        int turn = 0;
-        if(turn%2 == 0)
-        button.setText("X");
+            if (player == 1) {
+                button.setIcon(new ImageIcon("/home/bartek/IdeaProjects/TicTacToe/src/resources/X.png"));
+                switchTurn();
+            } else {
+                button.setIcon(new ImageIcon("/home/bartek/IdeaProjects/TicTacToe/src/resources/O.png"));
+                switchTurn();
+            }
+    }
+
+    private void switchTurn() {
+        if (player == 1)
+            player = 2;
         else
-            button.setText("O");
-        //button1.setIcon(new ImageIcon("/home/bartek/IdeaProjects/TicTacToe/src/resources/O.png"));
+            player =1;
     }
 
     public void actionPerformed(ActionEvent e) {
 
         JButton pressed = (JButton) e.getSource();
 
-            setMark(pressed);
+        setMark(pressed, player);
 
     }
 
