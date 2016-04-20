@@ -3,6 +3,6 @@ package Game;
 public class Game {
 
     public static void main(String[] args) {
-        new Board();
+        Start start = new Start();
     }
 }

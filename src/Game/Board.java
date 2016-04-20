@@ -2,73 +2,89 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Board extends JFrame {
+public class Board extends JPanel implements ActionListener{
 
-    private JPanel board, menu;
-    private JMenuBar menuBar;
-    private JMenu gameMenu, helpMenu;
-    private JMenuItem restartItem, exitItem, aboutItem;
-    private static final int DEFAULT_WIDTH = 300;
-    private static final int DEFAULT_HEIGHT = 300;
+    private JButton button1,button2, button3, button4, button5, button6, button7, button8, button9;
+    private GameArray gameArray;
 
     public Board(){
 
-        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-        setTitle("TicTacToe");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-        setResizable(false);
+        setLayout(new GridLayout(3, 3));
 
-        menu = new JPanel();
-        menu.setLayout(new FlowLayout());
+        button1 = new JButton("");
+        button2 = new JButton("");
+        button3 = new JButton("");
+        button4 = new JButton("");
+        button5 = new JButton("");
+        button6 = new JButton("");
+        button7 = new JButton("");
+        button8 = new JButton("");
+        button9 = new JButton("");
 
-        menuBar = new JMenuBar();
+        setGame();
 
-        gameMenu = new JMenu("Game");
-        helpMenu = new JMenu("Help");
+        add(button1);
+        add(button2);
+        add(button3);
+        add(button4);
+        add(button5);
+        add(button6);
+        add(button7);
+        add(button8);
+        add(button9);
 
-        menuBar.add(gameMenu);
-        menuBar.add(helpMenu);
+        button1.addActionListener(this);
+        button2.addActionListener(this);
+        button3.addActionListener(this);
+        button4.addActionListener(this);
+        button5.addActionListener(this);
+        button6.addActionListener(this);
+        button7.addActionListener(this);
+        button8.addActionListener(this);
+        button9.addActionListener(this);
 
-        restartItem = new JMenuItem("Restart");
-        exitItem = new JMenuItem("Exit");
-        exitItem.addActionListener(e -> System.exit(0));
-        aboutItem = new JMenuItem("About");
-        aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(null, "created by Bartek"));
+    }
 
-        gameMenu.add(restartItem);
-        gameMenu.add(exitItem);
-        helpMenu.add(aboutItem);
+    private void setGame() {
 
-        setJMenuBar(menuBar);
+        gameArray = new GameArray(this);
+        defaultText();
+    }
 
-        //game-board
+    private void defaultText() {
+        button1.setText("");
+        button2.setText("");
+        button3.setText("");
+        button4.setText("");
+        button5.setText("");
+        button6.setText("");
+        button7.setText("");
+        button8.setText("");
+        button9.setText("");
+    }
 
-        JButton button1 = new JButton("");
-        JButton button2 = new JButton("");
-        JButton button3 = new JButton("");
-        JButton button4 = new JButton("");
-        JButton button5 = new JButton("");
-        JButton button6 = new JButton("");
-        JButton button7 = new JButton("");
-        JButton button8 = new JButton("");
-        JButton button9 = new JButton("");
+    public void setMark(JButton button){
 
-        board = new JPanel();
-        board.setLayout(new GridLayout(3, 3));
+        int turn = 0;
+        if(turn%2 == 0)
+        button.setText("X");
+        else
+            button.setText("O");
+        //button1.setIcon(new ImageIcon("/home/bartek/IdeaProjects/TicTacToe/src/resources/O.png"));
+    }
 
-        board.add(button1);
-        board.add(button2);
-        board.add(button3);
-        board.add(button4);
-        board.add(button5);
-        board.add(button6);
-        board.add(button7);
-        board.add(button8);
-        board.add(button9);
+    public void actionPerformed(ActionEvent e) {
 
-        add(menu, BorderLayout.NORTH);
-        add(board);
+        JButton pressed = (JButton) e.getSource();
+
+            setMark(pressed);
+
+    }
+
+    public void reset() {
+        setGame();
     }
 }
